@@ -54,11 +54,9 @@ public class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
     @Override
     protected void onPostExecute(String result) {
         if (result != null){
-        JokeProvider jokeProvider = new JokeProvider();
-        String joke = jokeProvider.getJoke();
-        Intent intent = new Intent(context, JokeActivity.class);
-        intent.putExtra(JokeActivity.JOKE_KEY, joke);
-        context.startActivity(intent);
+            Intent intent = new Intent(context, JokeActivity.class);
+            intent.putExtra(JokeActivity.JOKE_KEY, result);
+            context.startActivity(intent);
         } else {
             Toast.makeText(context, context.getResources().getString(R.string.joke__loading_error), Toast.LENGTH_LONG).show();
         }
